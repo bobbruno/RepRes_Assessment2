@@ -1,0 +1,51 @@
+Title
+========================================================
+
+
+## Read the file
+
+```{r}
+read.csv(bzfile(local_saved_file), stringsAsFactors=FALSE)
+```
+
+After some time reading it in, I get a data set of 902297 observations, 
+and if I check the last of the ID numbers in the RENUM column with
+
+```{r}
+tail(my_storms$REFNUM)
+```
+I get 902292 902293 902294 902295 902296 902297
+
+please start from the original bz2 file and report what you get.
+
+If I run into trouble, I can load the data from "Data/pre-saved-storm-data.dat"
+into an object called stormData
+
+## Clean the data
+
+- Sort the n texts into 48 EVTYPE
+- Check for outliers in value of damage, there are some gross erros
+- Filter the top events that cause 90-95% of damage (after the previous step)
+
+### Some comments on cleaning the data
+
+I had extensive trouble cleaning the EVTYPE data, too. I went through all 48 types with gsub, but I found that it was even mixing data types (heat vs warmth vs extreme heat, or different types of storms).
+
+So I started over using only the data I knew I'd need. I created two new dataframes - one for the first research question, and one for the second. In the first dataframe, I eliminated all rows that had zero fatalities OR injuries, and in the second dataframe I eliminated all rows except the rows where the property damage or crop damage was equal to zero. This eliminated a HUGE number of rows, easing the process significantly.
+
+A few thinking:
+(1) Sort the events based on their contribution to people harmed / financial damage.
+Then you will find the top 30 events already cover 95%+ of the total sum.
+Ignoring the last 5% should not impact your final result.
+(2) Using the grep is ok.  And you don't need to manually do it 48 times, use a loop instead.
+(3) Using agrep() might help. it allows some misspelling.
+(4) I personally use adist(), comparing the distance between EVTYPE and the event candidates.
+Then choose a candidate with distance below some threshold.  
+I need a strategy to resolve multiple qualified candidates.
+
+I also need a strategy to handle the multiple-phrases in the EVTYPE or candidate names.
+For example, one candidate is "Hurricane (Typhoon)".
+I need to split it 3 aliases,  "Hurricane (Typhoon)" or "Hurricane", or ""Hurricane (Typhoon)".  A match to any of these aliases should mean a match to the original candidate.
+Because there's a limit to the time I have for this assignment .. I went with (1) top event types when sorted by their effect, and because there's a limit to what displays nicely on a plot, I kept it to the top 10.
+
+If I had more time I would try to categorise EVTYPE 

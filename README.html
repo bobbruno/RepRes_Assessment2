@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>John Hopkins University/Coursera: Reproducible Research - Peer Assessment 2</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>John Hopkins University/Coursera: Reproducible Research - Peer Assessment 2</h1>
+
+<h2>Introduction</h2>
+
+<p>Storms and other severe weather events can cause both public health and economic problems for communities and municipalities. Many severe events can result in fatalities, injuries, and property damage, and preventing such outcomes to the extent possible is a key concern.</p>
+
+<p>This project involves exploring the U.S. National Oceanic and Atmospheric Administration&#39;s (NOAA) storm database. This database tracks characteristics of major storms and weather events in the United States, including when and where they occur, as well as estimates of any fatalities, injuries, and property damage.</p>
+
+<h2>Data</h2>
+
+<p>The data for this assignment come in the form of a comma-separated-value file compressed via the bzip2 algorithm to reduce its size. You can download the file from the course web site:</p>
+
+<ul>
+<li><a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2">Storm Data</a> [47Mb]</li>
+</ul>
+
+<p>There is also some documentation of the database available. Here you will find how some of the variables are constructed/defined.</p>
+
+<ul>
+<li><p>National Weather Service <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf">Storm Data Documentation</a></p></li>
+<li><p>National Climatic Data Center Storm Events <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf">FAQ</a></p></li>
+</ul>
+
+<p>The events in the database start in the year 1950 and end in November 2011. In the earlier years of the database there are generally fewer events recorded, most likely due to a lack of good records. More recent years should be considered more complete.</p>
+
+<h2>Assignment</h2>
+
+<p>The basic goal of this assignment is to explore the NOAA Storm Database and answer some basic questions about severe weather events. You must use the database to answer the questions below and show the code for your entire analysis. Your analysis can consist of tables, figures, or other summaries. You may use any R package you want to support your analysis.</p>
+
+<h3>Questions</h3>
+
+<p>Your data analysis must address the following questions:</p>
+
+<ol>
+<li><p>Across the United States, which types of events (as indicated in the <code>EVTYPE</code> variable) are most harmful with respect to population health?</p></li>
+<li><p>Across the United States, which types of events have the greatest economic consequences?</p></li>
+</ol>
+
+<p>Consider writing your report as if it were to be read by a government or municipal manager who might be responsible for preparing for severe weather events and will need to prioritize resources for different types of events. However, there is no need to make any specific recommendations in your report.</p>
+
+<h3>Requirements</h3>
+
+<p>For this assignment you will need some specific tools</p>
+
+<ul>
+<li><p>RStudio: You will need RStudio to publish your completed analysis document to RPubs. You can also use RStudio to edit/write your analysis.</p></li>
+<li><p>knitr: You will need the knitr package in order to compile your R Markdown document and convert it to HTML</p></li>
+</ul>
+
+<h3>Document Layout</h3>
+
+<ul>
+<li><p>Language: Your document should be written in English.</p></li>
+<li><p>Title: Your document should have a title that <strong>briefly</strong> summarizes your data analysis</p></li>
+<li><p>Synopsis: Immediately after the title, there should be a synopsis which describes and summarizes your analysis in <strong>at most 10 complete sentences</strong>.</p></li>
+<li><p>There should be a section titled <strong>Data Processing</strong> which describes (in words and code) how the data were loaded into R and processed for analysis. In particular, your analysis must start from the raw CSV file containing the data. You cannot do any preprocessing outside the document. If preprocessing is time-consuming you may consider using the <code>cache = TRUE</code> option for certain code chunks.</p></li>
+<li><p>There should be a section titled <strong>Results</strong> in which your results are presented.</p></li>
+<li><p>You may have other sections in your analysis, but Data Processing and Results are <strong>required</strong>.</p></li>
+<li><p>The analysis document must have <strong>at least one figure containing a plot</strong>.</p></li>
+<li><p>Your analyis must have <strong>no more than three figures</strong>. Figures may have multiple plots in them (i.e. panel plots), but there cannot be more than three figures total.</p></li>
+</ul>
+
+<p>You must show all your code for the work in your analysis document. This may make the document a bit verbose, but that is okay. In general, you should ensure that <code>echo = TRUE</code> for every code chunk (this is the default setting in knitr).</p>
+
+<h3>Publishing Your Analysis</h3>
+
+<p>For this assignment you will need to publish your analysis on <a href="http://rpubs.com/">RPubs.com</a>. If you do not already have an account, then you will have to create a new account. After you have completed writing your analysis in RStudio, you can publish it to RPubs by doing the following:</p>
+
+<ol>
+<li><p>In RStudio, make sure your R Markdown document (<code>.Rmd</code>) document is loaded in the editor</p></li>
+<li><p>Click the <code>Knit HTML</code> button in the doc toolbar to preview your document.</p></li>
+<li><p>In the preview window, click the <code>Publish</code> button.</p></li>
+</ol>
+
+<p>Once your document is published to RPubs, you should get a unique URL to that document. <strong>Make a note of this URL</strong> as you will need it to submit your assignment.</p>
+
+<p><strong>NOTE</strong>: If you are having trouble connecting with RPubs due to proxy-related or other issues, you can upload your final analysis document file as a PDF to Coursera instead.</p>
+
+<h3>Submitting Your Assignment</h3>
+
+<p>In order to submit this assignment, you must copy the RPubs URL for your completed data analysis document in to the peer assessment question.</p>
+
+<h2>Evaluation Criteria</h2>
+
+<h3>Evaluation of the Work</h3>
+
+<ul>
+<li>Has either a (1) valid RPubs URL pointing to a data analysis document for this assignment been submitted; or (2) a complete PDF file presenting the data analysis been uploaded?</li>
+</ul>
+
+<h3>Overall evaluation/feedback</h3>
+
+<ul>
+<li><p>Is the document written in English?</p></li>
+<li><p>Does the document have a title that briefly summarizes the data analysis?</p></li>
+<li><p>Does the document have a synopsis that describes and summarizes the data analysis in less than 10 sentences?</p></li>
+<li><p>Is there a section titled &ldquo;Data Processing&rdquo; that describes how the data were loaded into R and processed for analysis?</p></li>
+<li><p>Is there a section titled &ldquo;Results&rdquo; where the main results are presented?</p></li>
+<li><p>Is there at least one figure in the document that contains a plot?</p></li>
+<li><p>Are there <strong>at most 3</strong> figures in this document?</p></li>
+<li><p>Does the analysis start from the raw data file (i.e. the original <code>.csv.bz2</code> file)?</p></li>
+<li><p>Does the analysis address the question of which types of events are most harmful to population health?</p></li>
+<li><p>Does the analysis address the question of which types of events have the greatest economic consequences?</p></li>
+<li><p>Do all the results of the analysis (i.e. figures, tables, numerical summaries) appear to be reproducible?</p></li>
+<li><p>Do the figure(s) have descriptive captions (i.e. there is a description near the figure of what is happening in the figure)?</p></li>
+<li><p>Does the analysis include description and justification for any data transformations?</p></li>
+<li><p>As far as you can determine, does it appear that the work submitted for this project is the work of the student who submitted it?</p></li>
+</ul>
+
+</body>
+
+</html>
+
