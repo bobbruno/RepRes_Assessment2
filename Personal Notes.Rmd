@@ -1,4 +1,4 @@
-Title
+Reproducible Research - Peer Assignment 2: Severity Analysis of Storms in the USA (19??-2010)
 ========================================================
 
 
@@ -23,8 +23,8 @@ into an object called stormData
 
 ## Clean the data
 
-- Sort the n texts into 48 EVTYPE
-- Check for outliers in value of damage, there are some gross erros
+- Sort the n texts into 48 EVTYPE: write down 48 regexps and sort them according to fatalities, injuries and damages
+- Check for outliers in value of damage, there are some gross errors
 - Filter the top events that cause 90-95% of damage (after the previous step)
 
 ### Some comments on cleaning the data
